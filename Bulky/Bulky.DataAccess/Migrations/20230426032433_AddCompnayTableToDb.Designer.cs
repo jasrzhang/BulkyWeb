@@ -4,6 +4,7 @@ using BulkyWeb.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bulky.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230426032433_AddCompnayTableToDb")]
+    partial class AddCompnayTableToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,38 +96,6 @@ namespace Bulky.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companys");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Adelaide",
-                            Name = "Tech Solution",
-                            PhoneNumber = "0888886666",
-                            PostalCode = "5000",
-                            State = "SA",
-                            StreetAddress = "123 King St"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Boxhill",
-                            Name = "ITWorks",
-                            PhoneNumber = "0388887777",
-                            PostalCode = "3000",
-                            State = "VIC",
-                            StreetAddress = "123 Queen St"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "Cairns",
-                            Name = "Crazy IT",
-                            PhoneNumber = "0788889999",
-                            PostalCode = "4870",
-                            State = "QLD",
-                            StreetAddress = "123 Esplanade "
-                        });
                 });
 
             modelBuilder.Entity("Bulky.Models.Product", b =>

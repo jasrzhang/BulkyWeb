@@ -15,7 +15,8 @@ namespace BulkyWeb.DataAccess.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ApplicationUser>  applicationUsers { get;set;}
+        public DbSet<ApplicationUser> applicationUsers { get; set; }
+        public DbSet<Company> Companys { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -111,11 +112,16 @@ namespace BulkyWeb.DataAccess.Data
                     ImageUrl = ""
                 }
             );
+            modelBuilder.Entity<Company>().HasData(
+                    new Company { Id = 1, Name = "Tech Solution", StreetAddress = "123 King St", City = "Adelaide", State = "SA", PostalCode = "5000", PhoneNumber = "0888886666" },
+                    new Company { Id = 2, Name = "ITWorks", StreetAddress = "123 Queen St", City = "Boxhill", State = "VIC", PostalCode = "3000", PhoneNumber = "0388887777" },
+                    new Company { Id = 3, Name = "Crazy IT", StreetAddress = "123 Esplanade ", City = "Cairns", State = "QLD", PostalCode = "4870", PhoneNumber = "0788889999" }
+            );
 
         }
 
 
-        
+
 
     }
 }
